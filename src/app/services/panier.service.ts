@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class PanierService {
   panierUrl: string = 'https://roboshopttn.herokuapp.com';
-
+  // panierUrl: string = 'https://localhost:3001';
   constructor(private httpClient: HttpClient) { }
 
   getAllproduct(id :any){

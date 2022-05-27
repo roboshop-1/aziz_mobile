@@ -13,7 +13,7 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
+  err : any ;
   new_date : any ;
   pro: any = [];
   product: any;
@@ -153,24 +153,35 @@ export class CartComponent implements OnInit {
           // this.msg= "Select you are not a robot"
         // }
         // else{
-        this.orderService.AddOrder(this.order).subscribe(
-          (result)=>{
-            console.log(result.message);
-            for (let i = 0; i < this.panier.length; i++) {
-              this.DeleteQuantity(this.panier[i]);
-              this.DeleteProduct(this.panier[i]);
-               
-              
-              
+
+        this.orderService.visaCheck(this.order).subscribe(
+          (data)=>{
+            console.log('messaaageee :',data.check);
+            var check = data.check ;
+            if (check =='true'){
+              this.orderService.AddOrder(this.order).subscribe(
+                (result)=>{
+                  console.log(result.message);
+                  for (let i = 0; i < this.panier.length; i++) {
+                    this.DeleteQuantity(this.panier[i]);
+                    this.DeleteProduct(this.panier[i]);
+                  }
+                  this.router.navigate([`payment/${result.product._id}`]).then(
+                    ()=>{
+                      this.ngOnInit();
+                      window.location.reload();
+                    }
+                  )
+                }
+              )
             }
-            this.router.navigate([`payment/${result.product._id}`]).then(
-              ()=>{
-                this.ngOnInit();
-                window.location.reload();
-              }
-            )
+            else{
+              this.err = "please verify your card information !"
+              console.log('error exist');
+            }
           }
         )
+
       // }
       }
     }

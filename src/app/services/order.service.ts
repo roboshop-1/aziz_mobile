@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class OrderService {
 
   orderUrl: string = 'https://roboshopttn.herokuapp.com';
-
+  // orderUrl: string = 'https://localhost:3001';
  constructor(private httpClient: HttpClient) { }
 
  AddOrder(order:any) {
@@ -44,4 +44,10 @@ export class OrderService {
   deleteOrder(id:any){
     return this.httpClient.delete<{message:string}>(`${this.orderUrl}/api/order/delete/${id}`);
   }
+
+  visaCheck(card:any){
+    return this.httpClient.post<{check:any}>(`${this.orderUrl}/api/payment/payment`, card);
+  }
+  
+
 }
