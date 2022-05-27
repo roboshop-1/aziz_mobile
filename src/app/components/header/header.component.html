@@ -19,7 +19,7 @@
                             <a href="" class="sf-with-ul">Home</a>
                         </li>
                         <li>
-                            <a href="/shop" class="sf-with-ul">SHOP</a>
+                            <a routerLink="/shop" class="sf-with-ul">SHOP</a>
 
                             <div class="megamenu megamenu-sm">
                                 <div class="row no-gutters">
@@ -28,7 +28,7 @@
                                             <div class="menu-title">Product Details</div>
                                             <!-- End .menu-title -->
                                             <ul>
-                                                <li *ngFor="let i of category"><a  href="/shop" >{{i.name}}</a></li>
+                                                <li *ngFor="let i of category"><a  routerLink="/shop" >{{i.name}}</a></li>
                                                               
                                                                
                                             </ul>
@@ -64,7 +64,7 @@
                         </li>
 
                         <li>
-                            <a href="/view-blogs"   class="sf-with-ul">Blog</a>
+                            <a routerLink="/view-blogs"   class="sf-with-ul">Blog</a>
 
                         </li>
 
@@ -72,7 +72,7 @@
                             <a href="#feedbacks" class="sf-with-ul">FEEDBACKS</a>
                         </li>
                         <li>
-                            <a href="contact.html" routerLink="/contact" class="sf-with-ul">Contact Us</a>
+                            <a routerLink="contact.html" routerLink="/contact" class="sf-with-ul">Contact Us</a>
                         </li>
 
                     </ul>
@@ -114,14 +114,14 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <a href="/whislist"  class="wishlist-link">
+                    <a routerLink="/whislist"  class="wishlist-link">
                         <i class="icon-heart-o"></i>
                         <span class="wishlist-count" style="margin-left:-8px;">{{whish_number}}</span>
 
                     </a>
                 </div>
 
-                <a href="/account" class="wishlist-link" (click)="User()">
+                <a routerLink="/account" class="wishlist-link" (click)="User()">
                     <i class="icon-user"></i>
                 </a>
 
